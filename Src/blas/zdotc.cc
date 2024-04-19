@@ -49,19 +49,18 @@ namespace CDC8600
 	    isjkj(5, 1)		// X5 (ix) = X5(-n) + 1
         ipjkj(5, 2)		// X5 (ix) = X5 (-n+1) * X2 (incx)
 		pass()
-LABEL(L1)   jmpp(4, loop)	// if X4 (incy) > 0 goto loop
+LABEL(L1)   pass()
+		pass()
+		jmpp(4, loop)	// if X4 (incy) > 0 goto loop
 	    idzkj(6, 0)		// X6 (iy) = -X0 (n)
 	    isjkj(6, 1)		// X6 (iy) = X6(-n) + 1
-            ipjkj(6, 4)		// X6 (iy) = X6 (-n+1) * X4 (incy)
+        ipjkj(6, 4)		// X6 (iy) = X6 (-n+1) * X4 (incy)
 		pass()
+LABEL(loop)	 pass()
 		pass()
-		pass()
-LABEL(loop) jmpz(0, end)	// if X0 (n) = 0 goto end
+		jmpz(0, end)	// if X0 (n) = 0 goto end
         rdjki(9, 1, 5)		// X7 = MEM[X1 (x) + X5 (ix)] (x real)
 		rdjki(10,3,6)		// X8 = MEM[X3(y) + X6 (iy)] (y real) 
-		// fmuljki(7,7,8)		// X7 (tmp1) = X7 (tmp1/ x real) * X8 (tmp2/ y real)
-		// faddjki(9,9,7)		// X9 (ztmp real) = X9 (ztmp real) + X7
-		// rdjki(7, 1, 5)		// X7 (tmp1) = MEM[X1 (x) + X5 (ix)] (real)
 	    isjkj(1, 1)		// X1 (x) = X1 (x) + 1
 	    isjkj(3, 1)		// X3 (y) = X3 (y) + 1
         rdjki(11, 1, 5)	// X11 = MEM[X1 (x) + X5 (ix)] (x imag)
@@ -83,12 +82,9 @@ LABEL(loop) jmpz(0, end)	// if X0 (n) = 0 goto end
 		pass()
 		pass()
         jmp(loop)
-		pass()
-		pass()
 LABEL(end)	isjki(0,7,1)
-			isjki(1,8,1)
-			// fadd(0,0,7) // X0 = X0 + X7 (z real)
-			// fadd(1,1,8) // X1 = X1 + X8 (z imaginary)
+		isjki(1,8,1)
+		pass()
 		jmpk(15,1)		// return to X15 (calling address) + 1
 	}
     } // namespace BLAS

@@ -437,7 +437,7 @@ namespace CDC8600
                 rdw(u08 i, u08 j) : LDop(i, j , 0) {}
                 rdw() : LDop(0,0,0) {}
                 u64 ready() const { return max(PROC[me()].Pready[_j], MEMready[_addr]); }
-                void target(u64 cycle) { PROC[me()].Pready[_j] = cycle; }
+                void target(u64 cycle) { PROC[me()].Pready[_i] = cycle; }
                 void used(u64 cycle) { PROC[me()].Pused[_j] = max(PROC[me()].Pused[_j], cycle); }
                 u64 latency() const { return PROC[me()].L1D.loadhit(_addr, _issue) ? params::L1::latency : params::MEM::latency; }
                 u64 throughput() const { return 1; }

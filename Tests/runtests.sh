@@ -1,4 +1,4 @@
-#!/bin/ksh
+# !/bin/ksh
 
 set -A BLAS1 "daxpy dcopy ddot"
 

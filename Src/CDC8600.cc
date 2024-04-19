@@ -610,6 +610,7 @@ namespace CDC8600
             mappers[0xb3] = new mapper<agen>;
             mappers[0x04] = new mapper<cpkj>;
         }
+
     } // namespace operations
 
     bool prediction
@@ -1624,6 +1625,10 @@ namespace CDC8600
                             if (PROC[me()].Plastop[i] == op[j])         // is this the last op for that registers?
                             {
                                 // cout << "recycling physical register " << i << endl;
+                                if(debugging)
+                                {
+                                    cout<<"Erasing the register : "<<i<<" Operation Number : "<<op[j]<<" Operation code : "<<F[j]<<"\n";
+                                }
                                 PROC[me()].pfree.insert(i);             // return register to free list
                                 PROC[me()].precycle.erase(i);           // register has been recycled
                                 break;

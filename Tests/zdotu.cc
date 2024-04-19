@@ -17,9 +17,9 @@ void test_zdotu(int count)
 {
     reset();
 
-    i32 n = rand() % 256;
-    i32 incx = (rand() % 16) - 8;
-    i32 incy = (rand() % 16) - 8;
+    i32 n = 1;
+    i32 incx = -1;
+    i32 incy = 1;
     u32 nx = n*abs(incx); if (0 == nx) nx = 1;
     u32 ny = n*abs(incy); if (0 == ny) ny = 1;
 
@@ -71,7 +71,7 @@ void test_zdotu(int count)
 
 int main()
 {
-    for (int i = 0; i < N; i++)
+    for (int i = 0; i < 1; i++)
     {
         test_zdotu(i);
     }

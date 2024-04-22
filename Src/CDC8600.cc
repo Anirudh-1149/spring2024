@@ -306,7 +306,7 @@ namespace CDC8600
     template class reg<20>;
 
     bool                        tracing = false;                // Trace during the simulation?
-    bool                        debugging = false;              // Debug during the simulation?
+    bool                        debugging = true;              // Debug during the simulation?
 
     void addlabel
     (

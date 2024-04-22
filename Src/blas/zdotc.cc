@@ -49,16 +49,14 @@ namespace CDC8600
 	    isjkj(5, 1)		// X5 (ix) = X5(-n) + 1
         ipjkj(5, 2)		// X5 (ix) = X5 (-n+1) * X2 (incx)
 		pass()
-LABEL(L1)   pass()
-		pass()
-		jmpp(4, loop)	// if X4 (incy) > 0 goto loop
+LABEL(L1)   jmpp(4, loop)	// if X4 (incy) > 0 goto loop
 	    idzkj(6, 0)		// X6 (iy) = -X0 (n)
 	    isjkj(6, 1)		// X6 (iy) = X6(-n) + 1
         ipjkj(6, 4)		// X6 (iy) = X6 (-n+1) * X4 (incy)
-		pass()
-LABEL(loop)	 pass()
-		pass()
-		jmpz(0, end)	// if X0 (n) = 0 goto end
+		pass()              // padding                                   [2]
+	    pass()              // padding                                   [2]
+	    pass() 
+LABEL(loop)	jmpz(0, end)	// if X0 (n) = 0 goto end
         rdjki(9, 1, 5)		// X7 = MEM[X1 (x) + X5 (ix)] (x real)
 		rdjki(10,3,6)		// X8 = MEM[X3(y) + X6 (iy)] (y real) 
 	    isjkj(1, 1)		// X1 (x) = X1 (x) + 1
@@ -78,8 +76,6 @@ LABEL(loop)	 pass()
         isjki(5, 5, 2)	// X5 (ix) = X5 (ix) + X2 (incx)
 	    isjki(6, 6, 4)	// X6 (iy) = X6 (iy) + X4 (incy)
 	    idjkj(0, 1)		// X0 (n) = X0 (n) - 1
-		pass()
-		pass()
 		pass()
         jmp(loop)
 LABEL(end)	isjki(0,7,1)
